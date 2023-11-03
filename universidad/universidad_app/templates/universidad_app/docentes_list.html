@@ -1,0 +1,31 @@
+{% extends 'universidad_app/base.html' %}
+
+{% block title %}Lista de Docentes{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Lista de Docentes</h1>
+        <a href="{% url 'agregar_docente' %}" class="btn btn-success">Agregar Docente</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Programa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for docente in docentes %}
+                    <tr>
+                        <td>{{ docente.id }}</td>
+                        <td>{{ docente.nombre }}</td>
+                        <td>{{ docente.programa.nombre }}</td>
+                    </tr>
+                    <td>
+                        <a href="{% url 'eliminar_docente' docente.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

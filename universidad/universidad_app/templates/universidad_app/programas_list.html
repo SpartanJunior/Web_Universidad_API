@@ -1,0 +1,31 @@
+{% extends 'universidad_app/base.html' %}
+
+{% block title %}Lista de Programas{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Lista de Programas</h1>
+        <a href="{% url 'agregar_programa' %}" class="btn btn-success">Agregar Programa</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Facultad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for programa in programas %}
+                    <tr>
+                        <td>{{ programa.id }}</td>
+                        <td>{{ programa.nombre }}</td>
+                        <td>{{ programa.facultad.nombre }}</td>
+                    </tr>
+                    <td>
+                        <a href="{% url 'eliminar_programa' programa.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
