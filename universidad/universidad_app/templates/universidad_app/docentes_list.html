@@ -4,26 +4,25 @@
 
 {% block content %}
     <div class="container">
-        <h1>Lista de Docentes</h1>
-        <a href="{% url 'agregar_docente' %}" class="btn btn-success">Agregar Docente</a>
+        <h1 class="bg-success text-white p-3">Lista de Docentes</h1>
+        <a href="{% url 'agregar_docente' %}" class="btn btn-primary mb-3">Agregar Docente</a>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Programa</th>
+                    <th class="text-success">Nombre</th>
+                    <th class="text-success">Programa</th>
+                    <th class="text-success">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for docente in docentes %}
                     <tr>
-                        <td>{{ docente.id }}</td>
                         <td>{{ docente.nombre }}</td>
                         <td>{{ docente.programa.nombre }}</td>
+                        <td>
+                            <a href="{% url 'eliminar_docente' docente.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
                     </tr>
-                    <td>
-                        <a href="{% url 'eliminar_docente' docente.id %}" class="btn btn-danger btn-sm">Eliminar</a>
-                    </td>
                 {% endfor %}
             </tbody>
         </table>
