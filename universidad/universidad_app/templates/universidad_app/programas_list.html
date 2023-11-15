@@ -1,0 +1,59 @@
+{% extends 'universidad_app/base.html' %}
+
+{% block title %}Lista de Programas{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Lista de Programas</h1>
+        <a href="{% url 'agregar_programa' %}" class="btn btn-success">Agregar Programa</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Facultad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for programa in programas %}
+                    <tr>
+                        <td>{{ programa.id }}</td>
+                        <td>{{ programa.nombre }}</td>
+                        <td>{{ programa.facultad.nombre }}</td>
+                        <td>
+
+                            <!-- Enlace para abrir la vista de editar -->
+                            <a href="{% url 'editar_programa' programa.id %}" class="btn btn-warning btn-sm">Editar</a>
+
+                            <!-- Enlace para abrir el modal -->
+                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarProgramaModal{{ programa.id }}">Eliminar</a>
+
+                            <!-- Modal de eliminación -->
+                            <div class="modal fade" id="eliminarProgramaModal{{ programa.id }}" tabindex="-1" role="dialog" aria-labelledby="eliminarProgramaModalLabel{{ programa.id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="eliminarProgramaModalLabel{{ programa.id }}">Eliminar Programa</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estás seguro de que deseas eliminar el programa "{{ programa.nombre }}"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <a href="{% url 'eliminar_programa' programa.id %}" class="btn btn-danger">Sí, eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
