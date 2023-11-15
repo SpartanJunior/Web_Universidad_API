@@ -33,10 +33,29 @@ def agregar_facultad(request):
     return render(request, 'universidad_app/agregar_facultad.html', {'form': form})
 
 
-def eliminar_facultad(request, facultad_id):
+def editar_facultad(request, facultad_id):
     facultad = Facultad.objects.get(id=facultad_id)
-    facultad.delete()
-    return redirect('facultades_list')
+
+    if request.method == 'POST':
+        form = FacultadForm(request.POST, instance=facultad)
+        if form.is_valid():
+            form.save()
+            return redirect('facultades_list')
+    else:
+        form = FacultadForm(instance=facultad)
+
+    return render(request, 'universidad_app/editar_facultad.html', {'form': form})
+
+
+def eliminar_facultad(request, facultad_id):
+    try:
+        facultad = Facultad.objects.get(id=facultad_id)
+        facultad.delete()
+        return redirect('facultades_list')
+    except Facultad.DoesNotExist:
+        return HttpResponseServerError("La facultad no existe")
+    except Exception as e:
+        return HttpResponseServerError(f"Error: {e}")
 
 # -------Administrar Programas-----------
 
@@ -53,7 +72,7 @@ def agregar_programa(request):
     return render(request, 'universidad_app/agregar_programa.html', {'form': form, 'facultades': facultades})
 
 
-def editar_programs(request, programa_id):
+def editar_programa(request, programa_id):
     programa = Programa.objects.get(id=programa_id)
 
     if request.method == 'POST':

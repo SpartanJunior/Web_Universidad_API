@@ -24,11 +24,21 @@ urlpatterns = [
     path('programas/', views.programas_list, name='programas_list'),
     path('docentes/', views.docentes_list, name='docentes_list'),
     path('facultades/agregar/', views.agregar_facultad, name='agregar_facultad'),
-    path('facultades/eliminar/<int:facultad_id>/', views.eliminar_facultad, name='eliminar_facultad'),
+    path('facultades/eliminar/<int:facultad_id>/',
+         views.eliminar_facultad, name='eliminar_facultad'),
     path('programas/agregar/', views.agregar_programa, name='agregar_programa'),
-    path('programas/eliminar/<int:programa_id>/', views.eliminar_programa, name='eliminar_programa'),
+    path('programas/eliminar/<int:programa_id>/',
+         views.eliminar_programa, name='eliminar_programa'),
     path('docentes/agregar/', views.agregar_docente, name='agregar_docente'),
-    path('docentes/eliminar/<int:docente_id>/', views.eliminar_docente, name='eliminar_docente'),
-    
+    path('docentes/eliminar/<int:docente_id>/',
+         views.eliminar_docente, name='eliminar_docente'),
+    path('editar_facultad/<int:facultad_id>/',
+         views.editar_facultad, name='editar_facultad'),
+    path('editar_programa/<int:programa_id>/',
+         views.editar_programa, name='editar_programa'),
+    path('editar_docente/<int:docente_id>/',
+         views.editar_docente, name='editar_docente'),
+
+
     path('admin/', admin.site.urls),
 ]
