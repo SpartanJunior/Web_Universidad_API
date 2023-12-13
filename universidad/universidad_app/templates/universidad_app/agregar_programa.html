@@ -3,8 +3,8 @@
 {% block title %}Agregar Programa{% endblock %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="display-4">Agregar Programa</h1>
+    <div class="container">
+        <h1 class="bg-success text-white p-3">Agregar Programa</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
@@ -15,7 +15,7 @@
             </select> {% endcomment %}
             <br>
             <br>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 {% endblock %}

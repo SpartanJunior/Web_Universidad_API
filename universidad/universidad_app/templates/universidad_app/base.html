@@ -4,24 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Universidad{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;  
+        }
+
+        .navbar-dark-bg {
+            background-color: #006400;  
+            color: #ffffff;  
+        }
+
+        .navbar-orange-bg {
+            background-color: #FFA500; 
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-bg">
         <a class="navbar-brand" href="#">Universidad</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse navbar-orange-bg" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'facultades_list' %}">Facultades</a>
+                    <a class="nav-link text-white" href="{% url 'facultades_list' %}">Facultades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'programas_list' %}">Programas</a>
+                    <a class="nav-link text-white" href="{% url 'programas_list' %}">Programas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'docentes_list' %}">Docentes</a>
+                    <a class="nav-link text-white" href="{% url 'docentes_list' %}">Docentes</a>
                 </li>
             </ul>
         </div>

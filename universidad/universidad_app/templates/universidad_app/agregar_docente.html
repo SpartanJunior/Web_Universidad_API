@@ -3,19 +3,14 @@
 {% block title %}Agregar Docentes{% endblock %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="display-4">Agregar Docente</h1>
+    <div class="container">
+        <h1 class="bg-success text-white p-3">Agregar Docente</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            {% comment %} <select name="facultad">
-                {% for facultad in facultades %}
-                    <option value="{{ facultad.id }}">{{ facultad.nombre }}</option>
-                {% endfor %}
-            </select> {% endcomment %}
             <br>
             <br>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 {% endblock %}
